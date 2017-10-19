@@ -1,7 +1,6 @@
 package misc
 
 var (
-	DejavusansTtf []byte
 	WingoWav      []byte
 	WingoPng      []byte
 	ClosePng      []byte
@@ -10,7 +9,6 @@ var (
 )
 
 func ReadData() {
-	DejavusansTtf = DataFile("DejaVuSans.ttf")
 	WingoWav = DataFile("wingo.wav")
 	WingoPng = DataFile("wingo.png")
 	ClosePng = DataFile("close.png")

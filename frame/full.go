@@ -413,7 +413,7 @@ type FullTheme struct {
 func DefaultFullTheme(X *xgbutil.XUtil) *FullTheme {
 	return &FullTheme{
 		Font: xgraphics.MustFont(xgraphics.ParseFont(
-			bytes.NewBuffer(misc.DejavusansTtf))),
+			bytes.NewBuffer(misc.DejavusansTTF))),
 		FontSize:   15,
 		AFontColor: render.NewColor(0xffffff),
 		IFontColor: render.NewColor(0x000000),
