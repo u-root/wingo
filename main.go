@@ -136,8 +136,6 @@ func main() {
 	if len(flagDataDir) > 0 {
 		misc.DataPaths.Override = flagDataDir
 	}
-	misc.ReadData()
-
 	keybind.Initialize(X)
 	mousebind.Initialize(X)
 	focus.Initialize(X)

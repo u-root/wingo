@@ -23,11 +23,21 @@ func main() {
 	defer f.Close()
 
 	packageTemplate.Execute(f, struct {
-		Timestamp time.Time
+		Timestamp     time.Time
 		DejavusansTTF []byte
+		WingoWav []byte
+		WingoPng []byte
+		ClosePng []byte
+		MinimizePng []byte
+		MaximizePng []byte
 	}{
-		Timestamp: time.Now(),
+		Timestamp:     time.Now(),
 		DejavusansTTF: DataFile("data/DejaVuSans.ttf"),
+		WingoWav:      DataFile("data/wingo.wav"),
+		WingoPng:      DataFile("data/wingo.png"),
+		ClosePng:      DataFile("data/close.png"),
+		MinimizePng:   DataFile("data/minimize.png"),
+		MaximizePng:   DataFile("data/maximize.png"),
 	})
 }
 
@@ -46,5 +56,10 @@ package misc
 
 var (
 	DejavusansTTF = []byte( {{with $x := .DejavusansTTF}}{{printf "%q" $x}}{{end}})
+	WingoWav = []byte( {{with $x := .WingoWav}}{{printf "%q" $x}}{{end}})
+	WingoPng = []byte( {{with $x := .WingoPng}}{{printf "%q" $x}}{{end}})
+	ClosePng = []byte( {{with $x := .ClosePng}}{{printf "%q" $x}}{{end}})
+	MinimizePng = []byte( {{with $x := .MinimizePng}}{{printf "%q" $x}}{{end}})
+	MaximizePng = []byte( {{with $x := .MaximizePng}}{{printf "%q" $x}}{{end}})
 )
 `))
