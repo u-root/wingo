@@ -17,13 +17,15 @@ package wini
 
 import (
 	"bufio"
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/u-root/wingo/misc"
 )
 
 type Data struct {
@@ -41,17 +43,16 @@ type Key struct {
 var findVar *regexp.Regexp = regexp.MustCompile("\\$[a-zA-Z0-9_]+")
 
 func Parse(filename string) (*Data, error) {
-	file, err := os.Open(filename)
+	b, err := misc.DataFile(filename)
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
 
 	data := &Data{
 		data:      make(map[string]Section),
 		variables: make(map[string]string),
 	}
-	reader := bufio.NewReader(file)
+	reader := bufio.NewReader(bytes.NewBuffer(b))
 
 	section := "" // options not in a section are not allowed
 	lnum := 0     // for nice error messages

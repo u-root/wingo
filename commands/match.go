@@ -11,7 +11,7 @@ import (
 
 type MatchClientMapped struct {
 	Client gribble.Any `param:"1" types:"int,string"`
-	Help string `
+	Help   string      `
 Returns 1 if the window specified by Client is mapped or not.
 
 Client may be the window id or a substring that matches a window name.
@@ -30,8 +30,8 @@ func (cmd MatchClientMapped) Run() gribble.Value {
 
 type MatchClientClass struct {
 	Client gribble.Any `param:"1" types:"int,string"`
-	Class string `param:"2"`
-	Help string `
+	Class  string      `param:"2"`
+	Help   string      `
 Returns 1 if the "class" part of the WM_CLASS property on the window
 specified by Client contains the substring specified by Class, and otherwise
 returns 0. The search is done case insensitively.
@@ -55,9 +55,9 @@ func (cmd MatchClientClass) Run() gribble.Value {
 }
 
 type MatchClientInstance struct {
-	Client gribble.Any `param:"1" types:"int,string"`
-	Instance string `param:"2"`
-	Help string `
+	Client   gribble.Any `param:"1" types:"int,string"`
+	Instance string      `param:"2"`
+	Help     string      `
 Returns 1 if the "instance" part of the WM_CLASS property on the window
 specified by Client contains the substring specified by Instance, and otherwise
 returns 0. The search is done case insensitively.
@@ -82,7 +82,7 @@ func (cmd MatchClientInstance) Run() gribble.Value {
 
 type MatchClientIsTransient struct {
 	Client gribble.Any `param:"1" types:"int,string"`
-	Help string `
+	Help   string      `
 Returns 1 if the window specified by Client is a transient window, and
 otherwise returns 0. A transient window usually corresponds to some kind of
 dialog window.
@@ -103,8 +103,8 @@ func (cmd MatchClientIsTransient) Run() gribble.Value {
 
 type MatchClientName struct {
 	Client gribble.Any `param:"1" types:"int,string"`
-	Name string `param:"2"`
-	Help string `
+	Name   string      `param:"2"`
+	Help   string      `
 Returns 1 if the name of the window specified by Client contains the substring
 specified by Name, and otherwise returns 0. The search is done case
 insensitively.
@@ -129,8 +129,8 @@ func (cmd MatchClientName) Run() gribble.Value {
 
 type MatchClientType struct {
 	Client gribble.Any `param:"1" types:"int,string"`
-	Type string `param:"2"`
-	Help string `
+	Type   string      `param:"2"`
+	Help   string      `
 Returns 1 if the type of the window specified by Client matches the type
 named by Type, and otherwise returns 0.
 
@@ -177,7 +177,7 @@ func (cmd False) Run() gribble.Value {
 }
 
 type Not struct {
-	Op int `param:"1"`
+	Op   int    `param:"1"`
 	Help string `
 Returns the negation of Op. When Op is 0, Not returns 1. When Op is 1, Not
 returns 0.
@@ -198,8 +198,8 @@ func (cmd Not) Run() gribble.Value {
 }
 
 type And struct {
-	Op1 int `param:"1"`
-	Op2 int `param:"2"`
+	Op1  int    `param:"1"`
+	Op2  int    `param:"2"`
 	Help string `
 Returns the logical AND of Op1 and Op2.
 
@@ -224,8 +224,8 @@ func (cmd And) Run() gribble.Value {
 }
 
 type Or struct {
-	Op1 int `param:"1"`
-	Op2 int `param:"2"`
+	Op1  int    `param:"1"`
+	Op2  int    `param:"2"`
 	Help string `
 Returns the logical OR of Op1 and Op2.
 

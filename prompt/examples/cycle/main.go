@@ -17,9 +17,9 @@ import (
 	"github.com/BurntSushi/xgbutil/ewmh"
 	"github.com/BurntSushi/xgbutil/keybind"
 	"github.com/BurntSushi/xgbutil/xevent"
-	"github.com/BurntSushi/xgbutil/xrect"
 	"github.com/BurntSushi/xgbutil/xgraphics"
 	"github.com/BurntSushi/xgbutil/xinerama"
+	"github.com/BurntSushi/xgbutil/xrect"
 	"github.com/BurntSushi/xgbutil/xwindow"
 
 	"github.com/u-root/wingo/prompt"
@@ -32,14 +32,14 @@ var (
 )
 
 type window struct {
-	X *xgbutil.XUtil
-	id xproto.Window
+	X      *xgbutil.XUtil
+	id     xproto.Window
 	mapped bool
 }
 
 func newWindow(X *xgbutil.XUtil, parent, id xproto.Window) *window {
 	w := &window{
-		X: X,
+		X:  X,
 		id: id,
 	}
 	w.setMapped()

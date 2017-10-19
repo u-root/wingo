@@ -43,11 +43,11 @@ type (
 		Id xproto.Window
 	}
 	UnmanagedClient struct {
-		Id xproto.Window
-		Name string
+		Id        xproto.Window
+		Name      string
 		Workspace string
-		Class string
-		Instance string
+		Class     string
+		Instance  string
 	}
 	ChangedClientName struct {
 		Id xproto.Window

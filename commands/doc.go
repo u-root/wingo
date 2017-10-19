@@ -1,7 +1,7 @@
 /*
 package commands defines the Gribble command environment for Wingo.
 
-For more about Gribble, see 
+For more about Gribble, see
 http://godoc.burntsushi.net/pkg/github.com/BurntSushi/gribble/
 
 For about using Gribble with Wingo, see

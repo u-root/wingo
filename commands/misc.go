@@ -12,8 +12,8 @@ import (
 
 	"github.com/u-root/wingo/logger"
 	"github.com/u-root/wingo/prompt"
-	"github.com/u-root/wingo/workspace"
 	"github.com/u-root/wingo/wm"
+	"github.com/u-root/wingo/workspace"
 	"github.com/u-root/wingo/xclient"
 )
 
