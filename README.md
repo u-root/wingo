@@ -1,7 +1,3 @@
-**NOTE: This repository is in maintenance mode. Wingo is still used every day,
-but because there are no tests, it is impossible to add new functionality.
-Therefore, I will only be doing work on Wingo required to make it work.**
-
 Wingo is an X window manager written in pure Go. All of its dependencies, from
 communicating with X up to drawing text on windows, are also in Go. Wingo is
 mostly ICCCM and EWMH compliant (see COMPLIANCE).
