@@ -11,7 +11,7 @@ import (
 	"github.com/BurntSushi/xgbutil/xevent"
 	"github.com/BurntSushi/xgbutil/xwindow"
 
-	"github.com/BurntSushi/wingo/prompt"
+	"github.com/u-root/wingo/prompt"
 )
 
 // hidden is a callback that is executed when the message disappears.

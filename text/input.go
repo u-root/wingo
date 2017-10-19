@@ -12,8 +12,8 @@ import (
 	"github.com/BurntSushi/xgbutil/xgraphics"
 	"github.com/BurntSushi/xgbutil/xwindow"
 
-	"github.com/BurntSushi/wingo/logger"
-	"github.com/BurntSushi/wingo/render"
+	"github.com/u-root/wingo/logger"
+	"github.com/u-root/wingo/render"
 )
 
 // Input encapsulates the information needed to construct and maintain

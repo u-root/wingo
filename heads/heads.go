@@ -9,8 +9,8 @@ import (
 	"github.com/BurntSushi/xgbutil/xrect"
 	"github.com/BurntSushi/xgbutil/xwindow"
 
-	"github.com/BurntSushi/wingo/logger"
-	"github.com/BurntSushi/wingo/workspace"
+	"github.com/u-root/wingo/logger"
+	"github.com/u-root/wingo/workspace"
 )
 
 type Heads struct {

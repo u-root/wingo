@@ -1,7 +1,7 @@
 package prompt
 
 import (
-	"github.com/BurntSushi/wingo/focus"
+	"github.com/u-root/wingo/focus"
 )
 
 func ignoreFocus(modeByte, detailByte byte) bool {

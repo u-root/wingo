@@ -3,11 +3,11 @@ package xclient
 import (
 	"time"
 
-	"github.com/BurntSushi/wingo/frame"
-	"github.com/BurntSushi/wingo/layout"
-	"github.com/BurntSushi/wingo/stack"
-	"github.com/BurntSushi/wingo/wm"
-	"github.com/BurntSushi/wingo/workspace"
+	"github.com/u-root/wingo/frame"
+	"github.com/u-root/wingo/layout"
+	"github.com/u-root/wingo/stack"
+	"github.com/u-root/wingo/wm"
+	"github.com/u-root/wingo/workspace"
 )
 
 func (c *Client) FloatingToggle() {

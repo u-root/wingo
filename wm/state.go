@@ -13,11 +13,11 @@ import (
 	"github.com/BurntSushi/xgbutil/xevent"
 	"github.com/BurntSushi/xgbutil/xwindow"
 
-	"github.com/BurntSushi/wingo/event"
-	"github.com/BurntSushi/wingo/focus"
-	"github.com/BurntSushi/wingo/heads"
-	"github.com/BurntSushi/wingo/logger"
-	"github.com/BurntSushi/wingo/workspace"
+	"github.com/u-root/wingo/event"
+	"github.com/u-root/wingo/focus"
+	"github.com/u-root/wingo/heads"
+	"github.com/u-root/wingo/logger"
+	"github.com/u-root/wingo/workspace"
 )
 
 var (
