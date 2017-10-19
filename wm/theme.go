@@ -456,7 +456,7 @@ func builtInButton(builtInData []byte) *xgraphics.Image {
 }
 
 func builtInFont() *truetype.Font {
-	font, err := freetype.ParseFont(misc.DejavusansTtf)
+	font, err := freetype.ParseFont(misc.DejavusansTTF)
 	if err != nil {
 		logger.Warning.Printf("Could not parse default font because: %v", err)
 		return nil
