@@ -1,3 +1,8 @@
+This is wingo, a fork of BurntSushi's window manager. The original author
+place wingo in maintenance mode a while back and has politely informed me
+that he plans no further development. Since we need changes for NiChrome,
+we've forked it here.
+
 Wingo is an X window manager written in pure Go. All of its dependencies, from
 communicating with X up to drawing text on windows, are also in Go. Wingo is
 mostly ICCCM and EWMH compliant (see COMPLIANCE).
