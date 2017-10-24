@@ -3,6 +3,12 @@
 	"ignore": "",
 	"package": [
 		{
+			"checksumSHA1": "d81OXQn8P/r8oNStuPQYHdI9Iro=",
+			"path": "github.com/BurntSushi/cmd",
+			"revision": "d54777ad4400afdb40a9d138416f6d27d746a769",
+			"revisionTime": "2012-11-22T23:20:22Z"
+		},
+		{
 			"checksumSHA1": "AY+HFV+kZFBoubhYUuBZl6d2dqg=",
 			"path": "github.com/BurntSushi/freetype-go/freetype",
 			"revision": "b763ddbfe298bf71c999a2833470da508f3a0677",
