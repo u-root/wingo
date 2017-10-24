@@ -25,11 +25,16 @@ func main() {
 	packageTemplate.Execute(f, struct {
 		Timestamp     time.Time
 		DejavusansTTF []byte
-		WingoWav []byte
-		WingoPng []byte
-		ClosePng []byte
-		MinimizePng []byte
-		MaximizePng []byte
+		WingoWav      []byte
+		WingoPng      []byte
+		ClosePng      []byte
+		MinimizePng   []byte
+		MaximizePng   []byte
+		Hooks         []byte
+		Key           []byte
+		Mouse         []byte
+		Options       []byte
+		Theme         []byte
 	}{
 		Timestamp:     time.Now(),
 		DejavusansTTF: DataFile("data/DejaVuSans.ttf"),
@@ -38,6 +43,11 @@ func main() {
 		ClosePng:      DataFile("data/close.png"),
 		MinimizePng:   DataFile("data/minimize.png"),
 		MaximizePng:   DataFile("data/maximize.png"),
+		Hooks:         DataFile("config/hooks.wini"),
+		Key:           DataFile("config/key.wini"),
+		Mouse:         DataFile("config/mouse.wini"),
+		Options:       DataFile("config/options.wini"),
+		Theme:         DataFile("config/theme.wini"),
 	})
 }
 
@@ -61,5 +71,37 @@ var (
 	ClosePng = []byte( {{with $x := .ClosePng}}{{printf "%q" $x}}{{end}})
 	MinimizePng = []byte( {{with $x := .MinimizePng}}{{printf "%q" $x}}{{end}})
 	MaximizePng = []byte( {{with $x := .MaximizePng}}{{printf "%q" $x}}{{end}})
+	// there are no globals that reference these, yet.
+	hooks = []byte( {{with $x := .Hooks}}{{printf "%q" $x}}{{end}})
+	key = []byte( {{with $x := .Key}}{{printf "%q" $x}}{{end}})
+	mouse = []byte( {{with $x := .Mouse}}{{printf "%q" $x}}{{end}})
+	options = []byte( {{with $x := .Options}}{{printf "%q" $x}}{{end}})
+	theme = []byte( {{with $x := .Theme}}{{printf "%q" $x}}{{end}})
+	// doubling the names up requires minimal code
+	// kludgery.
+	FileMap = map[string][]byte {
+		"DejaVuSans.ttf": DejavusansTTF,
+		"wingo.wav": WingoWav,
+		"data/wingo.png": WingoPng,
+		"data/close.png": ClosePng,
+		"data/minimize.png": MinimizePng,
+		"data/maximize.png": MaximizePng,
+		"hooks.wini":hooks,
+		"key.wini":key,
+		"mouse.wini":mouse,
+		"options.wini":options,
+		"theme.wini":theme,
+		// This is not great, but wingo got just a little too Klever
+		// for its own good, and until we can unwind some of the nonsense
+		// we do this ugly hack.
+		// We ought to be able to name just the base and have it find it.
+		// That's the whole point of search paths. wingo combined a fully
+		// qualified path with a search path, which is ... odd.
+		"/etc/xdg/wingo/hooks.wini":hooks,
+		"/etc/xdg/wingo/key.wini":key,
+		"/etc/xdg/wingo/mouse.wini":mouse,
+		"/etc/xdg/wingo/options.wini":options,
+		"/etc/xdg/wingo/theme.wini":theme,
+	}
 )
 `))

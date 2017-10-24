@@ -11,7 +11,7 @@ import (
 	"github.com/u-root/wingo/xclient"
 )
 
-type CycleClientChoose struct{
+type CycleClientChoose struct {
 	Help string `
 Activates the current choice in a cycle prompt.
 `
@@ -24,7 +24,7 @@ func (cmd CycleClientChoose) Run() gribble.Value {
 	})
 }
 
-type CycleClientHide struct{
+type CycleClientHide struct {
 	Help string `
 Hides (i.e., cancels) the current cycle prompt.
 `
@@ -41,7 +41,7 @@ type CycleClientNext struct {
 	OnlyActiveWorkspace string `param:"1"`
 	OnlyVisible         string `param:"2"`
 	ShowIconified       string `param:"3"`
-	Help string `
+	Help                string `
 Shows the cycle prompt for clients and advances the selection to the next
 client. If the cycle prompt is already visible, then the selection is advanced
 to the next client.
@@ -77,7 +77,7 @@ type CycleClientPrev struct {
 	OnlyActiveWorkspace string `param:"1"`
 	OnlyVisible         string `param:"2"`
 	ShowIconified       string `param:"3"`
-	Help string `
+	Help                string `
 Shows the cycle prompt for clients and advances the selection to the previous
 client. If the cycle prompt is already visible, then the selection is advanced
 to the previous client.
@@ -111,7 +111,7 @@ func (cmd CycleClientPrev) RunWithKeyStr(keyStr string) {
 
 type Input struct {
 	Label string `param:"1"`
-	Help string `
+	Help  string `
 Shows a centered prompt window that allows the user to type in text. If the
 user presses the Confirm Key (i.e., enter), then the text typed into the
 input box will be returned.
@@ -160,7 +160,7 @@ type SelectClient struct {
 	OnlyActiveWorkspace string `param:"2"`
 	OnlyVisible         string `param:"3"`
 	ShowIconified       string `param:"4"`
-	Help string `
+	Help                string `
 Shows a centered prompt window with a list of clients satisfying the arguments
 provided.
 
@@ -215,7 +215,7 @@ func (cmd SelectClient) Run() gribble.Value {
 
 type SelectWorkspace struct {
 	TabCompletion string `param:"1"`
-	Help string `
+	Help          string `
 Shows a centered prompt window with a list of all workspaces.
 
 TabCompletetion can be set to either "Prefix", "Any" or "Multiple". When it's
@@ -252,4 +252,3 @@ func (cmd SelectWorkspace) Run() gribble.Value {
 	}
 	panic("unreachable")
 }
-

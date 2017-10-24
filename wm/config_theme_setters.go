@@ -1,7 +1,12 @@
 package wm
 
+// We include image here but no specific decoders.
+// We count on xgraphics including all the bits we need
+// via _ imports. We'll see how long we want some of
+// the burnsushi packages, so this may change.
 import (
-	"io/ioutil"
+	"bytes"
+	"image"
 	"strconv"
 	"strings"
 
@@ -9,6 +14,7 @@ import (
 	"github.com/BurntSushi/freetype-go/freetype/truetype"
 
 	"github.com/BurntSushi/xgbutil/xgraphics"
+	"github.com/u-root/wingo/misc"
 
 	"github.com/u-root/wingo/logger"
 	"github.com/u-root/wingo/render"
@@ -160,20 +166,27 @@ func setGradient(k wini.Key, clr *render.Color) {
 }
 
 func setImage(k wini.Key, place **xgraphics.Image) {
-	if v, ok := getLastString(k); ok {
-		img, err := xgraphics.NewFileName(X, v)
-		if err != nil {
-			logger.Warning.Printf(
-				"Could not load '%s' as a png image because: %v", v, err)
-			return
-		}
-		*place = img
+	v, ok := getLastString(k)
+	if !ok {
+		return
 	}
+	b, err := misc.DataFile(v)
+	if err != nil {
+		logger.Warning.Printf(
+			"Could not load '%s' as a png image because: %v", v, err)
+	}
+
+	img, _, err := image.Decode(bytes.NewBuffer(b))
+	if err != nil {
+		logger.Warning.Printf(
+			"Could not load '%s' as a png image because: %v", v, err)
+	}
+	*place = xgraphics.NewConvert(X, img)
 }
 
 func setFont(k wini.Key, place **truetype.Font) {
 	if v, ok := getLastString(k); ok {
-		bs, err := ioutil.ReadFile(v)
+		bs, err := misc.DataFile(v)
 		if err != nil {
 			logger.Warning.Printf(
 				"Could not get font data from '%s' because: %v", v, err)

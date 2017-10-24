@@ -9,8 +9,8 @@ import (
 	"github.com/BurntSushi/xgbutil"
 	"github.com/BurntSushi/xgbutil/keybind"
 	"github.com/BurntSushi/xgbutil/xevent"
-	"github.com/BurntSushi/xgbutil/xrect"
 	"github.com/BurntSushi/xgbutil/xinerama"
+	"github.com/BurntSushi/xgbutil/xrect"
 	"github.com/BurntSushi/xgbutil/xwindow"
 
 	"github.com/u-root/wingo/prompt"
@@ -22,15 +22,15 @@ var (
 )
 
 type item struct {
-	text string
-	group int
+	text       string
+	group      int
 	promptItem *prompt.SelectItem
 }
 
 func newItem(text string, group int) *item {
 	return &item{
-		text: text,
-		group: group,
+		text:       text,
+		group:      group,
 		promptItem: nil,
 	}
 }

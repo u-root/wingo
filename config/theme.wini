@@ -76,7 +76,7 @@
 $THIN_COLOR := 0x585a5d
 
 [Full]
-font := /usr/share/fonts/TTF/DejaVuSansMono-Bold.ttf
+font := DejaVuSans.ttf
 font_size := 16
 a_font_color := 0xffffff
 i_font_color := 0x000000
@@ -92,15 +92,15 @@ i_border_color := $THIN_COLOR
 $ACTIVE_BUTTON := 0xffffff
 $INACTIVE_BUTTON := 0x000000
 
-close := ./data/close.png
+close := data/close.png
 a_close_color := $ACTIVE_BUTTON
 i_close_color := $INACTIVE_BUTTON
 
-maximize := ./data/maximize.png
+maximize := data/maximize.png
 a_maximize_color := $ACTIVE_BUTTON
 i_maximize_color := $INACTIVE_BUTTON
 
-minimize := ./data/minimize.png
+minimize := data/minimize.png
 a_minimize_color := $ACTIVE_BUTTON
 i_minimize_color := $INACTIVE_BUTTON
 
@@ -121,13 +121,13 @@ bg_color := 0x8e8e8e
 border_color := 0x585a5d
 border_size := 8
 padding := 15
-font := /usr/share/fonts/TTF/DejaVuSansMono.ttf
+font := DejaVuSans.ttf
 font_size := 17
 font_color := 0xffffff
 select_active_color := 0x4c4c4c
 select_active_bg_color := 0xffffff
 select_group_bg_color := 0x8e8e8e
-select_group_font := /usr/share/fonts/TTF/DejaVuSansMono-Bold.ttf
+select_group_font := DejaVuSans.ttf
 select_group_font_size := 25
 select_group_font_color := 0xffffff
 cycle_icon_size := 64
@@ -138,5 +138,5 @@ cycle_icon_transparency := 30
 
 [Misc]
 # This is the default icon to use for windows that don't specify an icon.
-default_icon := ./data/wingo.png
+default_icon := data/wingo.png
 

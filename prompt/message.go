@@ -254,7 +254,7 @@ var DefaultMessageTheme = &MessageTheme{
 	Padding:     10,
 
 	Font: xgraphics.MustFont(xgraphics.ParseFont(
-		bytes.NewBuffer(misc.DataFile("DejaVuSans.ttf")))),
+		bytes.NewBuffer(misc.MustDataFile("DejaVuSans.ttf")))),
 	FontSize:  20.0,
 	FontColor: render.NewImageColor(color.RGBA{0x0, 0x0, 0x0, 0xff}),
 }

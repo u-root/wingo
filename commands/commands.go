@@ -225,7 +225,10 @@ Make sure "audio_play_cmd" is set to a program that can play wav files.
 `
 }
 
+// This is not really used and somewhere it says it's an easter egg?
+// Just nil it out for now.
 func (cmd Dale) Run() gribble.Value {
+	return nil
 	go func() {
 		var stderr bytes.Buffer
 

@@ -50,7 +50,7 @@ func newConfig() *Configuration {
 		ShowFyi:         true,
 		ShowErrors:      true,
 		Shell:           "bash",
-		AudioProgram:    "aplay",
+		AudioProgram:    "", //"aplay",
 
 		mouse: map[string][]mouseCommand{},
 		key:   map[string][]keyCommand{},

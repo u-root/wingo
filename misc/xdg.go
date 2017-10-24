@@ -11,41 +11,55 @@ import (
 )
 
 var ConfigPaths = xdg.Paths{
-	Override:     "",
-	XDGSuffix:    "wingo",
-	GoImportPath: "github.com/u-root/wingo/config",
+	Override:  "",
+	XDGSuffix: "wingo",
 }
 
 var DataPaths = xdg.Paths{
-	Override:     "",
-	XDGSuffix:    "wingo",
-	GoImportPath: "github.com/u-root/wingo/data",
+	Override:  "",
+	XDGSuffix: "wingo",
 }
 
 var ScriptPaths = xdg.Paths{
-	Override:     "",
-	XDGSuffix:    "wingo",
-	GoImportPath: "github.com/u-root/wingo/config",
+	Override:  "",
+	XDGSuffix: "wingo",
 }
 
 func ConfigFile(name string) string {
 	fpath, err := ConfigPaths.ConfigFile(name)
 	if err != nil {
-		logger.Error.Fatalln(err)
+		_, ok := FileMap[name]
+		if !ok {
+			logger.Error.Fatalf("ConfigFile(%q): %v and not in map", name, err)
+		}
+		return name
 	}
 	return fpath
 }
 
-func DataFile(name string) []byte {
+func DataFile(name string) ([]byte, error) {
 	fpath, err := DataPaths.DataFile(name)
+	if err != nil {
+		b, ok := FileMap[name]
+		if !ok {
+			return nil, fmt.Errorf("%v: OS got %v and there is no builtin file", name, err)
+		}
+		return b, nil
+	}
+	b, err := ioutil.ReadFile(fpath)
+	if err != nil {
+		return nil, err
+	}
+	FileMap[name] = b
+	return b, nil
+}
+
+func MustDataFile(name string) []byte {
+	b, err := DataFile(name)
 	if err != nil {
 		logger.Error.Fatalln(err)
 	}
-	bs, err := ioutil.ReadFile(fpath)
-	if err != nil {
-		logger.Error.Fatalf("Could not read %s: %s", fpath, err)
-	}
-	return bs
+	return b
 }
 
 func ScriptPath(name string) string {
