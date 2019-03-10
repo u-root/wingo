@@ -126,7 +126,7 @@ func (conf *Configuration) loadMouseConfigSection(
 
 			if err := gribbleEnv.Check(cmd); err != nil {
 				logger.Warning.Printf(
-					"Could not parse command '%s' because: %s", cmd, err)
+					"Could not parse command '%s' because: %v", cmd, err)
 			} else {
 				down, justMouseStr := isDown(mouseStr)
 				mcmd := mouseCommand{
@@ -153,7 +153,7 @@ func (conf *Configuration) loadKeyConfigSection(
 
 			if err := gribbleEnv.Check(cmd); err != nil {
 				logger.Warning.Printf(
-					"Could not parse command '%s' because: %s", cmd, err)
+					"Could not parse command '%s' because: %v", cmd, err)
 			} else {
 				down, justKeyStr := isDown(keyStr)
 				kcmd := keyCommand{

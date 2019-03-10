@@ -24,7 +24,7 @@ Returns the id of the currently active window. If there is no active window,
 func (cmd GetActive) Run() gribble.Value {
 	reply, err := xproto.GetInputFocus(wm.X.Conn()).Reply()
 	if err != nil {
-		logger.Warning.Printf("Could not get input focus: %s", err)
+		logger.Warning.Printf("Could not get input focus: %v", err)
 		return 0
 	}
 

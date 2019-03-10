@@ -29,14 +29,14 @@ func ipc(X *xgbutil.XUtil) {
 
 	listener, err := net.Listen("unix", fpath)
 	if err != nil {
-		logger.Error.Fatalln("Could not start IPC listener: %s", err)
+		logger.Error.Fatalln("Could not start IPC listener:", err)
 	}
 	defer listener.Close()
 
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
-			logger.Warning.Printf("Error accepting IPC connection: %s", err)
+			logger.Warning.Printf("Error accepting IPC connection: %v", err)
 			continue
 		}
 
@@ -59,7 +59,7 @@ func socketFilePath(X *xgbutil.XUtil) string {
 	}
 
 	if err := os.MkdirAll(runtimeDir, 0777); err != nil {
-		logger.Error.Fatalf("Could not create directory '%s': %s",
+		logger.Error.Fatalf("Could not create directory '%s': %v",
 			runtimeDir, err)
 	}
 
@@ -75,7 +75,7 @@ func handleClient(conn net.Conn) {
 			return
 		}
 		if err != nil {
-			logger.Warning.Printf("Error reading command '%s': %s", msg, err)
+			logger.Warning.Printf("Error reading command '%s': %v", msg, err)
 			return
 		}
 		msg = msg[:len(msg)-1] // get rid of null terminator
@@ -90,7 +90,7 @@ func handleClient(conn net.Conn) {
 		val, err := commands.Env.RunMany(msg)
 		commands.Env.Verbose = false
 		if err != nil {
-			logger.Lots.Printf("ERROR running command: '%s'.", err)
+			logger.Lots.Printf("ERROR running command: '%v'.", err)
 			fmt.Fprintf(conn, "ERROR: %s%c", err, 0)
 
 			// One command failing doesn't mean we should close the conn.

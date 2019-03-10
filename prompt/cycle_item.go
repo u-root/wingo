@@ -181,6 +181,6 @@ func (ci *CycleItem) UpdateText() {
 		t.BgColor, txt)
 	if err != nil {
 		logger.Warning.Printf("(*CycleItem).UpdateText: "+
-			"Could not render text: %s", err)
+			"Could not render text: %v", err)
 	}
 }

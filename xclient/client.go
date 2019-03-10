@@ -128,8 +128,7 @@ func (c *Client) Close() {
 		err = xproto.SendEventChecked(wm.X.Conn(), false, c.Id(), 0,
 			string(cm.Bytes())).Check()
 		if err != nil {
-			logger.Message.Printf("Could not send WM_DELETE_WINDOW "+
-				"ClientMessage because: %s", err)
+			logger.Message.Printf("Could not send WM_DELETE_WINDOW ClientMessage because: %v", err)
 		}
 	} else {
 		c.win.Kill() // HULK SMASH!

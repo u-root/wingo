@@ -67,12 +67,12 @@ func Initialize(env *gribble.Environment, fpath string) {
 
 	cdata, err := wini.Parse(fpath)
 	if err != nil {
-		logger.Warning.Printf("Could not parse '%s': %s", fpath, err)
+		logger.Warning.Printf("Could not parse '%s': %v", fpath, err)
 		return
 	}
 	for _, hookName := range cdata.Sections() {
 		if err := readSection(cdata, hookName); err != nil {
-			logger.Warning.Printf("Could not load hook '%s': %s", hookName, err)
+			logger.Warning.Printf("Could not load hook '%s': %v", hookName, err)
 		}
 	}
 }
@@ -104,7 +104,7 @@ func Fire(hk Type, args Args) {
 				if err != nil {
 					logger.Warning.Printf("When executing the 'match' "+
 						"conditions for your '%s' hook in the '%s' group, "+
-						"the command '%s' returned an error: %s",
+						"the command '%s' returned an error: %v",
 						hook.name, hk, condCmd, err)
 					andMatched = false
 					orMatched = false
@@ -144,7 +144,7 @@ func Fire(hk Type, args Args) {
 				if err != nil {
 					logger.Warning.Printf("When executing the consequences "+
 						"for your '%s' hook in the '%s' group, the command "+
-						"'%s' returned an error: %s",
+						"'%s' returned an error: %v",
 						hook.name, hk, consequentCmd, err)
 					// consequent commands are independent, so we march on.
 				}
@@ -179,7 +179,7 @@ func readSection(cdata *wini.Data, section string) error {
 	// Check each satisfies command to make sure it's a valid Gribble command.
 	if cmd, err := checkCommands(satisfies); err != nil {
 		return fmt.Errorf("The match command '%s' in the '%s' hook could "+
-			"not be parsed: %s", cmd, section, err)
+			"not be parsed: %v", cmd, section, err)
 	}
 
 	// Now try to find whether it's a conjunction or not.

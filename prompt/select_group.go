@@ -67,7 +67,7 @@ func (si *SelectGroupItem) UpdateText() {
 		t.GroupFontColor, t.GroupBgColor, txt)
 	if err != nil {
 		logger.Warning.Printf("(*SelectGroupItem).UpdateText: "+
-			"Could not render text: %s", err)
+			"Could not render text: %v", err)
 	}
 }
 

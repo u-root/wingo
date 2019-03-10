@@ -49,14 +49,14 @@ func Initialize(x *xgbutil.XUtil,
 
 	Root = xwindow.New(X, X.RootWin())
 	if _, err = Root.Geometry(); err != nil {
-		logger.Error.Fatalf("Could not get ROOT window geometry: %s", err)
+		logger.Error.Fatalf("Could not get ROOT window geometry: %v", err)
 	}
 
 	if Config, err = loadConfig(); err != nil {
-		logger.Error.Fatalf("Could not load configuration: %s", err)
+		logger.Error.Fatalf("Could not load configuration: %v", err)
 	}
 	if Theme, err = loadTheme(); err != nil {
-		logger.Error.Fatalf("Could not load theme: %s", err)
+		logger.Error.Fatalf("Could not load theme: %v", err)
 	}
 
 	Clients = make(ClientList, 0, 50)
@@ -68,14 +68,13 @@ func Initialize(x *xgbutil.XUtil,
 	if names, _ := ewmh.DesktopNamesGet(X); len(names) > 0 {
 		for _, wrkName := range names {
 			if err := AddWorkspace(wrkName); err != nil {
-				logger.Warning.Printf("Could not add workspace %s: %s",
-					wrkName, err)
+				logger.Warning.Printf("Could not add workspace %s: %v", wrkName, err)
 			}
 		}
 	} else {
 		for _, wrkName := range Config.Workspaces {
 			if err := AddWorkspace(wrkName); err != nil {
-				logger.Error.Fatalf("Could not initialize workspaces: %s", err)
+				logger.Error.Fatalf("Could not initialize workspaces: %v", err)
 			}
 		}
 	}

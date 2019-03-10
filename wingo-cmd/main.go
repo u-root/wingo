@@ -61,7 +61,7 @@ func main() {
 	// Connect to the Wingo command server.
 	conn, err := net.Dial("unix", socketFilePath())
 	if err != nil {
-		log.Fatalf("Could not connect to Wingo IPC: %s", err)
+		log.Fatalf("Could not connect to Wingo IPC: %v", err)
 	}
 
 	// If the 'poll' flag is set, then we'll need to send the command and
@@ -69,14 +69,14 @@ func main() {
 	for {
 		// Send the command.
 		if _, err = fmt.Fprintf(conn, "%s%c", cmds, 0); err != nil {
-			log.Fatalf("Error writing command: %s", err)
+			log.Fatalf("Error writing command: %v", err)
 		}
 
 		// Read the response.
 		reader := bufio.NewReader(conn)
 		msg, err := reader.ReadString(0)
 		if err != nil {
-			log.Fatalf("Could not read response: %s", err)
+			log.Fatalf("Could not read response: %v", err)
 		}
 		msg = msg[:len(msg)-1] // get rid of null terminator
 
@@ -111,12 +111,12 @@ func getCommands() (cmds string) {
 		if flagFileInput == "-" { // stdin
 			contents, err = ioutil.ReadAll(os.Stdin)
 			if err != nil {
-				log.Fatalf("Could not read stdin: %s", err)
+				log.Fatalf("Could not read stdin: %v", err)
 			}
 		} else {
 			contents, err = ioutil.ReadFile(flagFileInput)
 			if err != nil {
-				log.Fatalf("Could not read file '%s': %s", flagFileInput, err)
+				log.Fatalf("Could not read file '%s': %v", flagFileInput, err)
 			}
 		}
 

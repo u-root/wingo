@@ -149,15 +149,13 @@ func setGradient(k wini.Key, clr *render.Color) {
 
 	start, err := strconv.ParseInt(strings.TrimSpace(splitted[0]), 0, 0)
 	if err != nil {
-		logger.Warning.Println(k.Err("'%s' is not an integer. (%s)",
-			splitted[0], err))
+		logger.Warning.Println(k.Err("'%s' is not an integer. (%v)", splitted[0], err))
 		return
 	}
 
 	end, err := strconv.ParseInt(strings.TrimSpace(splitted[1]), 0, 0)
 	if err != nil {
-		logger.Warning.Println(k.Err("'%s' is not an integer. (%s)",
-			splitted[1], err))
+		logger.Warning.Println(k.Err("'%s' is not an integer. (%v)", splitted[1], err))
 		return
 	}
 

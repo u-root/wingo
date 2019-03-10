@@ -39,7 +39,7 @@ func (kcmd keyCommand) attach() {
 
 		run, err := cmdHacks.CycleClientRunWithKeyStr(kcmd.keyStr, kcmd.cmdStr)
 		if err != nil {
-			logger.Warning.Printf("Could not setup %s: %s", kcmd.cmdName, err)
+			logger.Warning.Printf("Could not setup %s: %v", kcmd.cmdName, err)
 			return
 		}
 
@@ -48,7 +48,7 @@ func (kcmd keyCommand) attach() {
 				go run()
 			}).Connect(X, Root.Id, kcmd.keyStr, true)
 		if err != nil {
-			logger.Warning.Printf("Could not bind '%s': %s", kcmd.keyStr, err)
+			logger.Warning.Printf("Could not bind '%s': %v", kcmd.keyStr, err)
 		}
 
 		err = keybind.KeyPressFun(
@@ -56,7 +56,7 @@ func (kcmd keyCommand) attach() {
 				go run()
 			}).Connect(X, X.Dummy(), kcmd.keyStr, true)
 		if err != nil {
-			logger.Warning.Printf("Could not bind '%s': %s", kcmd.keyStr, err)
+			logger.Warning.Printf("Could not bind '%s': %v", kcmd.keyStr, err)
 		}
 	} else {
 		run := func() {
@@ -73,8 +73,7 @@ func (kcmd keyCommand) attach() {
 					run()
 				}).Connect(X, Root.Id, kcmd.keyStr, true)
 			if err != nil {
-				logger.Warning.Printf("Could not bind '%s': %s",
-					kcmd.keyStr, err)
+				logger.Warning.Printf("Could not bind '%s': %v", kcmd.keyStr, err)
 			}
 		} else {
 			err := keybind.KeyReleaseFun(
@@ -82,8 +81,7 @@ func (kcmd keyCommand) attach() {
 					run()
 				}).Connect(X, Root.Id, kcmd.keyStr, true)
 			if err != nil {
-				logger.Warning.Printf("Could not bind '%s': %s",
-					kcmd.keyStr, err)
+				logger.Warning.Printf("Could not bind '%s': %v", kcmd.keyStr, err)
 			}
 		}
 	}

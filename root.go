@@ -31,7 +31,7 @@ func rootInit(X *xgbutil.XUtil) {
 	}
 	err = xwindow.New(X, X.RootWin()).Listen(evMasks)
 	if err != nil {
-		logger.Error.Fatalf("Could not listen to Root window events: %s", err)
+		logger.Error.Fatalf("Could not listen to Root window events: %v", err)
 	}
 
 	// Update state when the root window changes size
@@ -81,7 +81,7 @@ func rootInit(X *xgbutil.XUtil) {
 func handleClientMessages(X *xgbutil.XUtil, ev xevent.ClientMessageEvent) {
 	name, err := xprop.AtomName(X, ev.Type)
 	if err != nil {
-		logger.Warning.Printf("Could not get atom name for '%s': %s", ev, err)
+		logger.Warning.Printf("Could not get atom name for '%s': %v", ev, err)
 		return
 	}
 	switch name {
@@ -115,7 +115,7 @@ func handleClientMessages(X *xgbutil.XUtil, ev xevent.ClientMessageEvent) {
 func handleMotionNotify(X *xgbutil.XUtil, ev xevent.MotionNotifyEvent) {
 	qp, err := xproto.QueryPointer(X.Conn(), X.RootWin()).Reply()
 	if err != nil {
-		logger.Warning.Printf("Could not query pointer: %s", err)
+		logger.Warning.Printf("Could not query pointer: %v", err)
 		return
 	}
 

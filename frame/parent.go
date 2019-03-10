@@ -34,14 +34,14 @@ func newParent(X *xgbutil.XUtil, cid xproto.Window) (*Parent, error) {
 	parent, err := xwindow.Generate(X)
 	if err != nil {
 		logger.Error.Printf("Could not create a parent window for client "+
-			"with id '%d' because: %s", cid, err)
+			"with id '%d' because: %v", cid, err)
 		logger.Error.Fatalf("In a state where no new windows can be created. " +
 			"Unfortunately, we must exit.")
 	}
 
 	// clientAttrs, err := xproto.GetWindowAttributes(X.Conn(), cid).Reply()
 	// if err != nil {
-	// return nil, fmt.Errorf("Could not get window attributes: %s", err)
+	// return nil, fmt.Errorf("Could not get window attributes: %v", err)
 	// }
 
 	// visual := clientAttrs.Visual
@@ -60,13 +60,13 @@ func newParent(X *xgbutil.XUtil, cid xproto.Window) (*Parent, error) {
 				xproto.EventMaskFocusChange,
 		}).Check()
 	if err != nil {
-		return nil, fmt.Errorf("Could not create window: %s", err)
+		return nil, fmt.Errorf("Could not create window: %v", err)
 	}
 
 	err = xproto.ReparentWindowChecked(X.Conn(),
 		cid, parent.Id, 0, 0).Check()
 	if err != nil {
-		return nil, fmt.Errorf("Could not reparent window: %s", err)
+		return nil, fmt.Errorf("Could not reparent window: %v", err)
 	}
 
 	return &Parent{
@@ -81,7 +81,7 @@ func (par *Parent) Deparent(cid xproto.Window) {
 	err := xproto.ReparentWindowChecked(
 		par.X.Conn(), cid, par.X.RootWin(), 0, 0).Check()
 	if err != nil {
-		logger.Warning.Printf("Could not deparent client window: %s", err)
+		logger.Warning.Printf("Could not deparent client window: %v", err)
 	}
 }
 

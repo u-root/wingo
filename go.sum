@@ -1,0 +1,16 @@
+github.com/BurntSushi/cmd v0.0.0-20121122232022-d54777ad4400 h1:NxWU+vqPG/W/n+AVQMaV4T2o/YaONlIw8YKaXRUM7PQ=
+github.com/BurntSushi/cmd v0.0.0-20121122232022-d54777ad4400/go.mod h1:BLMQWoKoIt/bljIRnnW4ZmiIL+dgLwHYM+7rgJaN+k4=
+github.com/BurntSushi/freetype-go v0.0.0-20160129220410-b763ddbfe298 h1:1qlsVAQJXZHsaM8b6OLVo6muQUQd4CwkH/D3fnnbHXA=
+github.com/BurntSushi/freetype-go v0.0.0-20160129220410-b763ddbfe298/go.mod h1:D+QujdIlUNfa0igpNMk6UIvlb6C252URs4yupRUV4lQ=
+github.com/BurntSushi/graphics-go v0.0.0-20160129215708-b43f31a4a966 h1:lTG4HQym5oPKjL7nGs+csTgiDna685ZXjxijkne828g=
+github.com/BurntSushi/graphics-go v0.0.0-20160129215708-b43f31a4a966/go.mod h1:Mid70uvE93zn9wgF92A/r5ixgnvX8Lh68fxp9KQBaI0=
+github.com/BurntSushi/gribble v0.0.0-20130910201338-956d80ded3b2 h1:qoby/o438hUgi6UgFD6jg+6VikIHChxke67y61h9g0M=
+github.com/BurntSushi/gribble v0.0.0-20130910201338-956d80ded3b2/go.mod h1:tNJlEOs16qFwFbiUIL2xGB72y4PWfhxhLBq9tE/mZfE=
+github.com/BurntSushi/xdg v0.0.0-20130804141135-e80d3446fea1 h1:wm6oM17JoxfyN6IuKH8r3bU7Q2DjYRADJWgSHNfUXiY=
+github.com/BurntSushi/xdg v0.0.0-20130804141135-e80d3446fea1/go.mod h1:GTqQ4bvL7tTmcOwcZ3VVzwjWulHgjD2uamy76yuySp0=
+github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802 h1:1BDTz0u9nC3//pOCMdNH+CiXJVYJh5UQNCOBG7jbELc=
+github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
+github.com/BurntSushi/xgbutil v0.0.0-20160919175755-f7c97cef3b4e h1:4ZrkT/RzpnROylmoQL57iVUL57wGKTR5O6KpVnbm2tA=
+github.com/BurntSushi/xgbutil v0.0.0-20160919175755-f7c97cef3b4e/go.mod h1:uw9h2sd4WWHOPdJ13MQpwK5qYWKYDumDqxWWIknEQ+k=
+github.com/str1ngs/ansi v0.0.0-20140224183525-5dc1bc5ac1f5 h1:U+UvQ6r9f8+UJGlNFbSRT8joWRl4dsDU6jUeLN4Ni+I=
+github.com/str1ngs/ansi v0.0.0-20140224183525-5dc1bc5ac1f5/go.mod h1:PTAhc07Ym/1r3ExOzEjP0Uzix6okE8SRkzTth6hBjiE=
