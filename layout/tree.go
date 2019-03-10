@@ -215,7 +215,7 @@ func (s *split) RemoveNode(n node) {
 		}
 	}
 	if !removed {
-		panic(fmt.Sprintf("The node '%s' is not in the split '%s'.", n, s))
+		panic(fmt.Sprintf("The node '%v' is not in the split '%v'.", n, s))
 	}
 
 	// Distribute this node's portion to the rest.

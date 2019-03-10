@@ -203,7 +203,7 @@ func (cycle *Cycle) Show(workarea xrect.Rect,
 	if cycle.config.Grab {
 		if err := keybind.SmartGrab(cycle.X, cycle.X.Dummy()); err != nil {
 			logger.Warning.Printf(
-				"Could not grab keyboard for prompt cycle: %s", err)
+				"Could not grab keyboard for prompt cycle: %v", err)
 			return false
 		}
 	}

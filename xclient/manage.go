@@ -28,8 +28,7 @@ func New(id xproto.Window) *Client {
 	// If this is an override redirect, skip...
 	attrs, err := xproto.GetWindowAttributes(wm.X.Conn(), id).Reply()
 	if err != nil {
-		logger.Warning.Printf("Could not get window attributes for '%d': %s",
-			id, err)
+		logger.Warning.Printf("Could not get window attributes for '%d': %v", id, err)
 	} else {
 		if attrs.OverrideRedirect {
 			logger.Message.Printf(
@@ -45,7 +44,7 @@ func New(id xproto.Window) *Client {
 
 	win := xwindow.New(wm.X, id)
 	if _, err := win.Geometry(); err != nil {
-		logger.Warning.Printf("Could not manage client %d because: %s", id, err)
+		logger.Warning.Printf("Could not manage client %d because: %v", id, err)
 		return nil
 	}
 
@@ -133,8 +132,7 @@ func (c *Client) manage() {
 	if err != nil {
 		logger.Warning.Printf(
 			"Could not add client '%s' to SaveSet. This may be problematic "+
-				"if you try to replace Wingo with another window manager: %s",
-			c, err)
+				"if you try to replace Wingo with another window manager: %v", c, err)
 	}
 
 	<-promptDone
@@ -424,15 +422,13 @@ func (c *Client) setShaped() {
 	if wm.ShapeExt {
 		err := shape.SelectInputChecked(wm.X.Conn(), c.Id(), true).Check()
 		if err != nil {
-			logger.Warning.Printf("Could not select Shape events for '%s': %s",
-				c, err)
+			logger.Warning.Printf("Could not select Shape events for '%s': %v", c, err)
 			return
 		}
 
 		extents, err := shape.QueryExtents(wm.X.Conn(), c.Id()).Reply()
 		if err != nil {
-			logger.Warning.Printf("X Shape QueryExtents failed on '%s': %s",
-				c, err)
+			logger.Warning.Printf("X Shape QueryExtents failed on '%s': %v", c, err)
 			return
 		}
 		c.shaped = extents.BoundingShaped

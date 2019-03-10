@@ -119,7 +119,7 @@ func own(X *xgbutil.XUtil, replace bool) error {
 				if err != nil {
 					continue
 				}
-				logger.Message.Printf("Got event, error: %s -- %s", ev, err)
+				logger.Message.Printf("Got event, error: %s -- %v", ev, err)
 				if destNotify, ok := ev.(xproto.DestroyNotifyEvent); ok {
 					if destNotify.Window == otherWmOwner {
 						break OTHER_WM_SHUTDOWN
@@ -194,7 +194,7 @@ func currentTime(X *xgbutil.XUtil) (xproto.Timestamp, error) {
 	err = xwindow.New(X, X.RootWin()).Listen(xproto.EventMaskPropertyChange)
 	if err != nil {
 		return 0, fmt.Errorf(
-			"Could not listen to Root window events (PropertyChange): %s", err)
+			"Could not listen to Root window events (PropertyChange): %v", err)
 	}
 
 	// Do a zero-length append on a property as suggested by ICCCM 2.1.

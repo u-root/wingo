@@ -247,7 +247,7 @@ func (k Key) Ints() ([]int, error) {
 	for i, val := range k.vals() {
 		ival, err := strconv.ParseInt(val, 0, 0)
 		if err != nil {
-			return nil, k.Err("'%s' is not an integer. (%s)", val, err)
+			return nil, k.Err("'%s' is not an integer. (%v)", val, err)
 		}
 		ivals[i] = int(ival)
 	}
@@ -259,7 +259,7 @@ func (k Key) Floats() ([]float64, error) {
 	for i, val := range k.vals() {
 		fval, err := strconv.ParseFloat(val, 64)
 		if err != nil {
-			return nil, k.Err("'%s' is not a decimal. (%s)", val, err)
+			return nil, k.Err("'%s' is not a decimal. (%v)", val, err)
 		}
 		fvals[i] = fval
 	}

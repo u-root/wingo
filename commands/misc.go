@@ -27,7 +27,7 @@ func parsePos(geom xrect.Rect, gribblePos gribble.Any, y bool) (int, bool) {
 		return pos, true
 	case float64:
 		if pos <= 0 || pos > 1 {
-			logger.Warning.Printf("'%s' not in the valid range (0, 1].", pos)
+			logger.Warning.Printf("'%f' not in the valid range (0, 1].", pos)
 			return 0, false
 		}
 
@@ -50,7 +50,7 @@ func parseDim(geom xrect.Rect, gribbleDim gribble.Any, hght bool) (int, bool) {
 		return dim, true
 	case float64:
 		if dim <= 0 || dim > 1 {
-			logger.Warning.Printf("'%s' not in the valid range (0, 1].", dim)
+			logger.Warning.Printf("'%f' not in the valid range (0, 1].", dim)
 			return 0, false
 		}
 

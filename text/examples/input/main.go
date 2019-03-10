@@ -28,8 +28,7 @@ import (
 
 var (
 	// A near guaranteed font. If parsing fails, MustFont wll panic.
-	font = xgraphics.MustFont(xgraphics.ParseFont(
-		bytes.NewBuffer(misc.DataFile("DejaVuSans.ttf"))))
+	font      = xgraphics.MustFont(xgraphics.ParseFont(bytes.NewBuffer(misc.MustDataFile("DejaVuSans.ttf"))))
 	fontSize  = 30.0
 	fontColor = render.NewImageColor(color.RGBA{0x0, 0x0, 0x0, 0xff})
 	bgColor   = render.NewImageColor(color.RGBA{0xff, 0xff, 0xff, 0xff})

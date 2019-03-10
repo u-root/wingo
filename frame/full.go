@@ -442,8 +442,7 @@ func builtInButton(X *xgbutil.XUtil,
 
 	img, err := xgraphics.NewBytes(X, builtInData)
 	if err != nil {
-		logger.Error.Printf("Could not get built in button image because: %v",
-			err)
+		logger.Error.Printf("Could not get built in button image because: %v", err)
 		panic("")
 	}
 	return img

@@ -194,7 +194,7 @@ The name of the workspace that was added is returned.
 func (cmd AddWorkspace) Run() gribble.Value {
 	return syncRun(func() gribble.Value {
 		if err := wm.AddWorkspace(cmd.Name); err != nil {
-			wm.PopupError("Could not add workspace '%s': %s", cmd.Name, err)
+			wm.PopupError("Could not add workspace '%s': %v", cmd.Name, err)
 			return ""
 		}
 		return cmd.Name
@@ -241,7 +241,7 @@ func (cmd Dale) Run() gribble.Value {
 			if stderr.Len() > 0 {
 				logger.Warning.Printf("%s failed: %s", program, stderr.String())
 			}
-			logger.Warning.Printf("Error running %s: %s", program, err)
+			logger.Warning.Printf("Error running %s: %v", program, err)
 		}
 	}()
 	return nil
@@ -287,7 +287,7 @@ func (cmd Focus) Run() gribble.Value {
 				xc, rw := wm.X.Conn(), wm.X.RootWin()
 				qp, err := xproto.QueryPointer(xc, rw).Reply()
 				if err != nil {
-					logger.Warning.Printf("Could not query pointer: %s", err)
+					logger.Warning.Printf("Could not query pointer: %v", err)
 					return
 				}
 
@@ -899,7 +899,7 @@ func (cmd RemoveWorkspace) Run() gribble.Value {
 	return syncRun(func() gribble.Value {
 		withWorkspace(cmd.Workspace, func(wrk *workspace.Workspace) {
 			if err := wm.RemoveWorkspace(wrk); err != nil {
-				wm.PopupError("Could not remove workspace '%s': %s", wrk, err)
+				wm.PopupError("Could not remove workspace '%s': %v", wrk, err)
 				return
 			}
 
@@ -927,7 +927,7 @@ func (cmd RenameWorkspace) Run() gribble.Value {
 		withWorkspace(cmd.Workspace, func(wrk *workspace.Workspace) {
 			oldName := wrk.String()
 			if err := wm.RenameWorkspace(wrk, cmd.NewName); err != nil {
-				wm.PopupError("Could not rename workspace '%s': %s", wrk, err)
+				wm.PopupError("Could not rename workspace '%s': %v", wrk, err)
 				return
 			}
 
@@ -1000,7 +1000,7 @@ func (cmd Script) Run() gribble.Value {
 
 		err := shellCmd.Run()
 		if err != nil {
-			logger.Warning.Printf("Error running script '%s': %s",
+			logger.Warning.Printf("Error running script '%s': %v",
 				cmd.Command, err)
 			if stderr.Len() > 0 {
 				logger.Warning.Printf("Error running script '%s': %s",
@@ -1060,7 +1060,7 @@ func (cmd Shell) Run() gribble.Value {
 
 		err := shellCmd.Run()
 		if err != nil {
-			logger.Warning.Printf("Error running '%s': %s", cmd.Command, err)
+			logger.Warning.Printf("Error running '%s': %v", cmd.Command, err)
 			if stderr.Len() > 0 {
 				logger.Warning.Printf("Error running '%s': %s",
 					cmd.Command, stderr.String())
@@ -1136,7 +1136,7 @@ func (cmd WingoExec) Run() gribble.Value {
 	_, err := Env.RunMany(cmd.Commands)
 	Env.Verbose = false
 	if len(cmd.Commands) > 0 && err != nil {
-		wm.PopupError("%s", err)
+		wm.PopupError("%v", err)
 	}
 	return nil
 }

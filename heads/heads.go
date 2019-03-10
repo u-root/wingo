@@ -137,8 +137,7 @@ func (hds *Heads) Reload(clients Clients) {
 		hds.ActivateWorkspace(hds.visibles[newActive])
 
 		if oldActive != hds.visibles[hds.active] {
-			panic(fmt.Sprintf("BUG: Old active workspace %s is not the same "+
-				"as the new active workspace.",
+			panic(fmt.Sprintf("BUG: Old active workspace %v is not the same as the new active workspace %v",
 				oldActive, hds.visibles[hds.active]))
 		}
 	}
@@ -272,7 +271,7 @@ func query(X *xgbutil.XUtil) xinerama.Heads {
 					"with the Xinerama extension.")
 			} else {
 				logger.Warning.Printf("Could not load physical heads via "+
-					"Xinerama: %s", err)
+					"Xinerama: %v", err)
 			}
 			logger.Warning.Printf("Assuming one head with size equivalent " +
 				"to the root window.")

@@ -21,7 +21,7 @@ func Notifier(X *xgbutil.XUtil, fp string) {
 
 	listener, err := net.Listen("unix", fp)
 	if err != nil {
-		logger.Error.Fatalln("Could not start IPC event listener: %s", err)
+		logger.Error.Fatalln("Could not start IPC event listener:", err)
 	}
 	defer listener.Close()
 
@@ -30,7 +30,7 @@ func Notifier(X *xgbutil.XUtil, fp string) {
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
-			logger.Warning.Printf("Error accepting IPC event conn: %s", err)
+			logger.Warning.Printf("Error accepting IPC event conn: %v", err)
 			continue
 		}
 		go handleSubscriber(conn)
@@ -64,19 +64,19 @@ func handleSubscriber(conn net.Conn) {
 	}
 
 	if err := writeEvent(Subscribed{}); err != nil {
-		logger.Warning.Printf("Error sending initial subscription: %s", err)
+		logger.Warning.Printf("Error sending initial subscription: %v", err)
 		return
 	}
 	for {
 		select {
 		case <-time.After(5 * time.Second):
 			if err := writeEvent(Noop{}); err != nil {
-				logger.Warning.Printf("Subscriber timed out: %s", err)
+				logger.Warning.Printf("Subscriber timed out: %v", err)
 				return
 			}
 		case ev := <-events:
 			if err := writeEvent(ev); err != nil {
-				logger.Warning.Printf("Error sending event: %s", err)
+				logger.Warning.Printf("Error sending event: %v", err)
 				return
 			}
 		}

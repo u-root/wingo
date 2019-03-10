@@ -19,7 +19,7 @@ func (f *Full) newPieceWindow(ident string,
 	win, err := xwindow.Generate(f.X)
 	if err != nil {
 		logger.Error.Printf("Could not create a frame window for client "+
-			"with id '%d' because: %s", f.client.Id(), err)
+			"with id '%d' because: %v", f.client.Id(), err)
 		logger.Error.Fatalf("In a state where no new windows can be created. " +
 			"Unfortunately, we must exit.")
 	}

@@ -36,8 +36,7 @@ func writeConfigFiles() {
 	// Okay, we're all set to continue. Create the directory and copy all of
 	// the configuration files.
 	if err := os.MkdirAll(configDir, 0777); err != nil {
-		logger.Error.Fatalf("Could not create directory '%s': %s",
-			configDir, err)
+		logger.Error.Fatalf("Could not create directory '%s': %v", configDir, err)
 	}
 
 	files := []string{
@@ -46,8 +45,7 @@ func writeConfigFiles() {
 	for _, f := range files {
 		dst := path.Join(configDir, f)
 		if err := copyFile(dst, misc.ConfigFile(f)); err != nil {
-			logger.Error.Fatalf("Could not copy file '%s' to '%s': %s",
-				f, dst, err)
+			logger.Error.Fatalf("Could not copy file '%s' to '%s': %v", f, dst, err)
 		}
 	}
 }

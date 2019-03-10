@@ -83,7 +83,7 @@ func (c *Client) isAttrsUnmapped() bool {
 	attrs, err := xproto.GetWindowAttributes(wm.X.Conn(), c.Id()).Reply()
 	if err != nil {
 		logger.Warning.Printf(
-			"Could not get window attributes for '%s': %s.", c, err)
+			"Could not get window attributes for '%s': %v.", c, err)
 		return false
 	}
 	return attrs.MapState == xproto.MapStateUnmapped

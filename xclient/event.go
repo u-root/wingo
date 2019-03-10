@@ -149,8 +149,7 @@ func (c *Client) cbPropertyNotify() xevent.PropertyNotifyFun {
 	f := func(X *xgbutil.XUtil, ev xevent.PropertyNotifyEvent) {
 		name, err := xprop.AtomName(wm.X, ev.Atom)
 		if err != nil {
-			logger.Warning.Printf("Could not get property atom name for '%s' "+
-				"because: %s.", ev, err)
+			logger.Warning.Printf("Could not get property atom name for '%s' because: %v.", ev, err)
 			return
 		}
 
@@ -165,8 +164,7 @@ func (c *Client) cbClientMessage() xevent.ClientMessageFun {
 	f := func(X *xgbutil.XUtil, ev xevent.ClientMessageEvent) {
 		name, err := xprop.AtomName(wm.X, ev.Type)
 		if err != nil {
-			logger.Warning.Printf("Could not get property atom name for "+
-				"ClientMessage event on '%s': %s.", c, err)
+			logger.Warning.Printf("Could not get property atom name for ClientMessage event on '%s': %v.", c, err)
 			return
 		}
 
@@ -254,8 +252,7 @@ func (c *Client) cbShapeNotify() xevent.ShapeNotifyFun {
 				shape.SoSet, ev.ShapeKind, c.frame.Parent().Id,
 				xoff, yoff, xproto.PixmapNone).Check()
 			if err != nil {
-				logger.Warning.Printf("Error clearing Shape mask on '%s': %s",
-					c, err)
+				logger.Warning.Printf("Error clearing Shape mask on '%s': %v", c, err)
 			}
 			return
 		}
@@ -265,7 +262,7 @@ func (c *Client) cbShapeNotify() xevent.ShapeNotifyFun {
 			shape.SoSet, ev.ShapeKind, ev.ShapeKind,
 			c.frame.Parent().Id, xoff, yoff, c.Id()).Check()
 		if err != nil {
-			logger.Warning.Printf("Error combining on '%s': %s", c, err)
+			logger.Warning.Printf("Error combining on '%s': %v", c, err)
 			return
 		}
 
@@ -297,7 +294,7 @@ func (c *Client) cbShapeNotify() xevent.ShapeNotifyFun {
 			shape.SoUnion, shape.SkBounding, xproto.ClipOrderingUnsorted,
 			c.frame.Parent().Id, 0, 0, []xproto.Rectangle{rect}).Check()
 		if err != nil {
-			logger.Warning.Printf("Error adding rectangles on '%s': %s", c, err)
+			logger.Warning.Printf("Error adding rectangles on '%s': %v", c, err)
 			return
 		}
 	}

@@ -85,13 +85,13 @@ func (si *SelectItem) UpdateText() {
 		t.FontColor, t.BgColor, si.text)
 	if err != nil {
 		logger.Warning.Printf("(*SelectItem).UpdateText: "+
-			"Could not render text: %s", err)
+			"Could not render text: %v", err)
 	}
 
 	err = text.DrawText(si.highlighted, t.Font, t.FontSize,
 		t.ActiveFontColor, t.ActiveBgColor, si.text)
 	if err != nil {
 		logger.Warning.Printf("(*SelectItem).UpdateText: "+
-			"Could not render text: %s", err)
+			"Could not render text: %v", err)
 	}
 }

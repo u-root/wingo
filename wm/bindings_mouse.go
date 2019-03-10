@@ -50,7 +50,7 @@ func (mcmd mouseCommand) setup(c Client, wid xproto.Window) {
 	if mcmd.cmdName == "MouseResize" {
 		direction, err := cmdHacks.MouseResizeDirection(mcmd.cmdStr)
 		if err != nil {
-			logger.Warning.Println("Could not setup MouseResize: %s", err)
+			logger.Warning.Println("Could not setup MouseResize:", err)
 			return
 		}
 		setupResizeDrag(c, wid, mcmd.buttonStr, true, strToDirection(direction))
@@ -138,8 +138,7 @@ func (mcmd mouseCommand) attach(wid xproto.Window, run func(),
 				run()
 			}).Connect(X, wid, mcmd.buttonStr, propagate, grab)
 		if err != nil {
-			logger.Warning.Printf("Could not bind '%s': %s",
-				mcmd.buttonStr, err)
+			logger.Warning.Printf("Could not bind '%s': %v", mcmd.buttonStr, err)
 		}
 	} else {
 		err := mousebind.ButtonReleaseFun(
@@ -147,8 +146,7 @@ func (mcmd mouseCommand) attach(wid xproto.Window, run func(),
 				run()
 			}).Connect(X, wid, mcmd.buttonStr, propagate, grab)
 		if err != nil {
-			logger.Warning.Printf("Could not bind '%s': %s",
-				mcmd.buttonStr, err)
+			logger.Warning.Printf("Could not bind '%s': %v", mcmd.buttonStr, err)
 		}
 	}
 }
@@ -165,7 +163,7 @@ func (mcmd mouseCommand) attachGrabRelease(wid xproto.Window, run func()) {
 			// empty
 		}).Connect(X, wid, mcmd.buttonStr, false, true)
 	if err != nil {
-		logger.Warning.Printf("Could not bind '%s': %s", mcmd.buttonStr, err)
+		logger.Warning.Printf("Could not bind '%s': %v", mcmd.buttonStr, err)
 	}
 
 	err = mousebind.ButtonReleaseFun(
@@ -173,7 +171,7 @@ func (mcmd mouseCommand) attachGrabRelease(wid xproto.Window, run func()) {
 			run()
 		}).Connect(X, wid, mcmd.buttonStr, false, false)
 	if err != nil {
-		logger.Warning.Printf("Could not bind '%s': %s", mcmd.buttonStr, err)
+		logger.Warning.Printf("Could not bind '%s': %v", mcmd.buttonStr, err)
 	}
 }
 

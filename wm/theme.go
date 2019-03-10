@@ -413,10 +413,11 @@ func loadPromptOption(theme *ThemeConfig, k wini.Key) {
 		// naughty!
 		if theme.Prompt.cycleIconTransparency < 0 ||
 			theme.Prompt.cycleIconTransparency > 100 {
-			logger.Warning.Printf("Illegal value '%s' provided for " +
-				"'cycle_icon_transparency'. Transparency " +
-				"values must be in the range [0, 100], " +
-				"inclusive. Using 100 by default.")
+			logger.Warning.Printf(
+				"Illegal value '%d' provided for "+
+					"'cycle_icon_transparency'. Transparency "+
+					"values must be in the range [0, 100], "+
+					"inclusive. Using 100 by default.", theme.Prompt.cycleIconTransparency)
 			theme.Prompt.cycleIconTransparency = 100
 		}
 	case "select_active_font_color":
@@ -437,8 +438,7 @@ func loadPromptOption(theme *ThemeConfig, k wini.Key) {
 func builtInIcon() *xgraphics.Image {
 	img, err := xgraphics.NewBytes(X, misc.WingoPng)
 	if err != nil {
-		logger.Warning.Printf("Could not get built in icon image because: %v",
-			err)
+		logger.Warning.Printf("Could not get built in icon image because: %v", err)
 		return nil
 	}
 	return img
@@ -448,8 +448,7 @@ func builtInButton(builtInData []byte) *xgraphics.Image {
 
 	img, err := xgraphics.NewBytes(X, builtInData)
 	if err != nil {
-		logger.Warning.Printf("Could not get built in button image because: %v",
-			err)
+		logger.Warning.Printf("Could not get built in button image because: %v", err)
 		return nil
 	}
 	return img

@@ -120,7 +120,7 @@ func (ti *Input) Add(mods uint16, kc xproto.Keycode) {
 // or if Add is not working, resort to AddLetter.
 func (ti *Input) AddLetter(char rune) {
 	if char == 0 {
-		logger.Warning.Printf("(*Input).Add: Strange input: '%s'.", char)
+		logger.Warning.Printf("(*Input).Add: Strange input: '%c'.", char)
 		return
 	}
 

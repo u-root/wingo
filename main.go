@@ -127,7 +127,7 @@ func main() {
 	// to replace *us*.
 	if err := own(X, flagReplace); err != nil {
 		logger.Error.Fatalf(
-			"Could not establish window manager ownership: %s", err)
+			"Could not establish window manager ownership: %v", err)
 	}
 
 	if len(flagConfigDir) > 0 {
@@ -177,7 +177,7 @@ func main() {
 	if len(flagCpuProfile) > 0 {
 		f, err := os.Create(flagCpuProfile)
 		if err != nil {
-			logger.Error.Fatalf("%s\n", err)
+			logger.Error.Fatalf("%v\n", err)
 		}
 		pprof.StartCPUProfile(f)
 		defer pprof.StopCPUProfile()
@@ -225,7 +225,7 @@ EVENTLOOP:
 		if !found {
 			os.Args = append(os.Args, "--wingo-restarted")
 		}
-		logger.Message.Println("The user has told us to restart...\n\n\n")
+		logger.Message.Print("The user has told us to restart...\n\n\n\n")
 		if err := syscall.Exec(os.Args[0], os.Args, os.Environ()); err != nil {
 			logger.Error.Fatalf("Could not exec '%s': %s",
 				strings.Join(os.Args, " "), err)
@@ -253,7 +253,7 @@ func setSupported() {
 func manageExistingClients() {
 	tree, err := xproto.QueryTree(wm.X.Conn(), wm.Root.Id).Reply()
 	if err != nil {
-		logger.Warning.Printf("Could not issue QueryTree request: %s", err)
+		logger.Warning.Printf("Could not issue QueryTree request: %v", err)
 		return
 	}
 	for _, potential := range tree.Children {
